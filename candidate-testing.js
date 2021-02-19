@@ -1,4 +1,5 @@
-/ TODO 2: modify your quiz app to ask 5 questions //
+const input = require('readline-sync');
+// TODO 2: modify your quiz app to ask 5 questions //
 // TODO 1.1a: Define candidateName //
 console.log("Welcome to part 1: Minimum Viable Quiz");
 console.log(" ");
@@ -9,16 +10,20 @@ var candidateAnswer;
 var questions;
 var correctAnswers;
 var candidateAnswers;
+var candidateName =" ";
  //function askForName() {
   // TODO 1.1b: Ask for candidate's name //
-var candidateName = (prompt("Please enter your Name", "candidateName"));
+  function askForName() {
+// TODO 1.1b: Ask for candidate's name //
+var candidateName = input.question("Please enter your Name ", "candidateName");
 console.log(" ");
 console.log("Welcome to the test ", candidateName);
-//}
+}
+ askForName();
 //function askQuestion() {
   // TODO 1.2b: Ask candidate the question and assign the response as candidateAnswer //
   console.log(" ");
-var candidateAnswer = (prompt("Who was the first American woman in space?", "candidateAnswer"));
+var candidateAnswer = input.question("Who was the first American woman in space? ", "candidateAnswer");
   correctAnswer = candidateAnswer;
 while(true)
 {
@@ -30,7 +35,7 @@ while(true)
   }
   else
   {
-    correctAnswer = (prompt("Please check your answer and attempt again", "correctAnswer"));
+    correctAnswer = input.question("Please check your answer and attempt again ", "correctAnswer");
   }
 }
 console.log(" ");
@@ -50,37 +55,39 @@ var questions = [[ 'Who was the first American woman in space?'],
 var correctAnswers = [['Sally Ride'],['true'],['Trajectory'], ['40'], ['3']];
 var candidateAnswers = [];
 var gradeQuiz = 0;
-function askForName() {
-// TODO 1.1b: Ask for candidate's name //
-var candidateName = (prompt("Please enter your Name", "candidateName"));
-console.log(" ");
-console.log("Welcome to the test ", candidateName);
-}
-askForName();
+
 
 function askQuestion() {
   // TODO 1.2b: Ask candidate the question and assign the response as candidateAnswer //
   var i=0;
     while (i < questions.length){ 
    
-      candidateAnswers.push((prompt(i+1 + ")  " + questions[i])));
+      candidateAnswers.push(input.question(i+1 + ")  " + questions[i]));
       if(correctAnswers[i] == candidateAnswers[i]){
         gradeQuiz+=1;
       }
        console.log("Candidate Answer  " + candidateAnswers[i])
-      console.log("Correct Answer " + correctAnswer[i])
+      console.log("Correct Answer " + correctAnswers[i])
       console.log(" ");
          i++; 
 
 }
 }
-askQuestion();
-console.log(">>> Overall Grade: " + ((gradeQuiz/questions.length )*100) + "%  " + (gradeQuiz) + " of " + (questions.length) + " responses correct <<<");
+
+function runProgram() {
+  // TODO 1.1c: Ask for candidate's name //
+  askForName();
+  console.log(" ");
+  
+  askQuestion();
+  //gradeQuiz(this.candidateAnswers);
 if (gradeQuiz >= 2){
   console.log(">>> Status: Pass <<< ");
 }
 else {
   console.log(">>> Status: FAILED <<<");
+}
+console.log(">>> Overall Grade: " + ((gradeQuiz/questions.length )*100) + "%  " + (gradeQuiz) + " of " + (questions.length) + " responses correct <<<");
 }
 module.exports = {
   candidateName: candidateName,
@@ -91,5 +98,5 @@ module.exports = {
   correctAnswers: correctAnswers,
   candidateAnswers: candidateAnswers,
   gradeQuiz: gradeQuiz,
-//  runProgram: runProgram
+ runProgram: runProgram
 };
