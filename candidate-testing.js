@@ -47,11 +47,7 @@ console.log("Welcome to part 2 and 3: Multiple Questions");
 console.log(" ");
 
 // TODO 1.2a: Define question, correctAnswer, and candidateAnswer //
-var questions = [[ 'Who was the first American woman in space?'], 
-['True or false: 5000 meters = 5 kilometers.'], 
-["Given the array [8, 'Orbit', 'Trajectory', 45], what entry is at index 2?"],
-['(5 + 3)/2 * 10 = ?'], 
-['What is the minimum crew size for the ISS?'] ];
+var questions =  ['Who was the first American woman in space? ', 'True or false: 5 kilometer == 5000 meters? ', '(5 + 3)/2 * 10 = ? ', "Given the array [8, 'Orbit', 'Trajectory', 45], what entry is at index 2? ", 'What is the minimum crew size for the ISS? '];
 var correctAnswers = [['Sally Ride'],['true'],['Trajectory'], ['40'], ['3']];
 var candidateAnswers = [];
 var gradeQuiz = 0;
