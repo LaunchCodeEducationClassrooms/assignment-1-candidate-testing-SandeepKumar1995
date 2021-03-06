@@ -1,56 +1,82 @@
-const input = require('readline-sync');
-// TODO 2: modify your quiz app to ask 5 questions //
-// TODO 1.1a: Define candidateName //
+// TODO 1.1a: Define candidateName // 
+var candidateName="";
 // TODO 1.2a: Define question, correctAnswer, and candidateAnswer //
-var question;
-var correctAnswer;
-var candidateAnswer;
-var candidateName =" ";
-var questions = [[ 'Who was the first American woman in space?'], ['True or false: 5000 meters = 5 kilometers.'], ['Given the array [8, Orbit, Trajectory, 45], what entry is at index 2?'], ['(5 + 3)/2 * 10 = ?'], ['What is the minimum crew size for the ISS?'] ];
-var correctAnswers = [['sally ride'],['true'],['trajectory'], ['40'], ['3']];
-var candidateAnswers = [];
-var gradeQuiz = 0;
+var question="Who was the first American woman in space? ";
+var correctAnswer="Sally Ride";
+var candidateAnswer="";
+var questions=[ 'Who was the first American woman in space? ','True or false: 5 kilometer == 5000 meters? ','(5 + 3)/2 * 10 = ? ',"Given the array [8, 'Orbit', 'Trajectory', 45], what entry is at index 2? ",'What is the minimum crew size for the ISS? ' ];
+var correctAnswers=["Sally Ride","true","40","Trajectory","3"];
+var candidateAnswers=[];
 
-// TODO 1.1b: Ask for candidate's name //
+
 function askForName() {
-  var candidateName = input.question("Please enter your Name ", "candidateName");
-  console.log(" ");
-  console.log("Welcome to the test ", candidateName);
+  // TODO 1.1b: Ask for candidate's name //
+  candidateName=input.question("Candidate Name:");
+
 }
-//function askQuestion() {
-// TODO 1.2b: Ask candidate the question and assign the response as candidateAnswer //
-console.log("Welcome to part 2 and 3: Multiple Questions");
-console.log(" ");
 
 function askQuestion() {
   // TODO 1.2b: Ask candidate the question and assign the response as candidateAnswer //
   var i=0;
-  while (i < questions.length){ 
-    candidateAnswers.push(input.question(i+1 + ")  " + questions[i]));
-    if((correctAnswers[i]) == (candidateAnswers[i]).toLowerCase()){
-      gradeQuiz+=1;
-    }
-    console.log("Candidate Answer  " + candidateAnswers[i])
-    console.log("Correct Answer " + correctAnswers[i])
-    console.log(" ");
-    i++; 
+  while(i<questions.length)
+  {
+    candidateAnswers.push(input.question(questions[i]));
+    console.log(`Your Answer: ${candidateAnswers[i]}\nCorrect Answer: ${correctAnswers[i]}\n`)
+    i++;
   }
 }
 
+function gradeQuiz(candidateAnswers) {
+
+  // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
+  var rightAnswer=0;
+  if(candidateAnswers[0].toLowerCase() === correctAnswers[0].toLowerCase())
+  {
+    rightAnswer+=1;
+  }
+  if(candidateAnswers[1].toLowerCase() === correctAnswers[1].toLowerCase())
+  {
+    rightAnswer+=1;
+  }
+  if(candidateAnswers[2].toLowerCase() === correctAnswers[2].toLowerCase())
+  {
+    rightAnswer+=1;
+  }
+  if(candidateAnswers[3].toLowerCase() === correctAnswers[3].toLowerCase())
+  {
+    rightAnswer+=1;
+  }
+  if(candidateAnswers[4].toLowerCase() === correctAnswers[4].toLowerCase())
+  {
+    rightAnswer+=1;
+  }
+
+  var numOfQuestions=questions.length
+  var grade=rightAnswer/numOfQuestions*100;
+  if(grade<80)
+  {
+    console.log(`>>> Overall Grade: ${grade}% (${rightAnswer} of ${questions.length} responses correct)<<<\n>>> Status: FAILED <<<`)
+  }
+  else
+  {
+    console.log(`>>> Overall Grade: ${grade}% (${rightAnswer} of ${questions.length} responses correct)<<<\n>>> Status: PASSED <<<`)
+  }
+  
+
+  return grade;
+}
+
 function runProgram() {
-  // TODO 1.1c: Ask for candidate's name //
   askForName();
-  console.log(" ");
+  // TODO 1.1c: Ask for candidate's name //
+  console.log("Candidate Name:",candidateName);
+  console.log("\n");
   askQuestion();
-  //gradeQuiz(this.candidateAnswers);
-if (gradeQuiz >= 2){
-  console.log(">>> Status: Pass <<< ");
+  gradeQuiz(this.candidateAnswers);
 }
-else {
-  console.log(">>> Status: FAILED <<<");
-}
-console.log(">>> Overall Grade: " + ((gradeQuiz/questions.length )*100) + "%  " + (gradeQuiz) + " of " + (questions.length) + " responses correct <<<");
-}
+
+// Don't write any code below this line //
+// And don't change these or your program will not run as expected //
 module.exports = {
   candidateName: candidateName,
   question: question,
@@ -60,5 +86,5 @@ module.exports = {
   correctAnswers: correctAnswers,
   candidateAnswers: candidateAnswers,
   gradeQuiz: gradeQuiz,
- runProgram: runProgram
+  runProgram: runProgram
 };
