@@ -23,14 +23,14 @@ console.log("Welcome to the test ", candidateName);
 //function askQuestion() {
   // TODO 1.2b: Ask candidate the question and assign the response as candidateAnswer //
   console.log(" ");
-var candidateAnswer = input.question("Who was the first American woman in space? ", "candidateAnswer");
+var candidateAnswer = (input.question("Who was the first American woman in space? ", "candidateAnswer")).toLowerCase();
   correctAnswer = candidateAnswer;
 while(true)
 {
-  if (correctAnswer ==="Sally Ride")
+  if (correctAnswer ==="sally ride")
   {
     console.log(" ");
-  console.log("Congratulations your answer " + correctAnswer + " is correct");
+  console.log("Congratulations your answer " + candidateAnswer + " is correct");
   break;
   }
   else
@@ -52,7 +52,7 @@ var questions = [[ 'Who was the first American woman in space?'],
 ["Given the array [8, 'Orbit', 'Trajectory', 45], what entry is at index 2?"],
 ['(5 + 3)/2 * 10 = ?'], 
 ['What is the minimum crew size for the ISS?'] ];
-var correctAnswers = [['Sally Ride'],['true'],['Trajectory'], ['40'], ['3']];
+var correctAnswers = [['sally ride'],['true'],['trajectory'], ['40'], ['3']];
 var candidateAnswers = [];
 var gradeQuiz = 0;
 
@@ -63,10 +63,10 @@ function askQuestion() {
     while (i < questions.length){ 
    
       candidateAnswers.push(input.question(i+1 + ")  " + questions[i]));
-      if(correctAnswers[i] == candidateAnswers[i]){
+      if((correctAnswers[i]) == (candidateAnswers[i]).toLowerCase()){
         gradeQuiz+=1;
       }
-       console.log("Candidate Answer  " + candidateAnswers[i])
+      console.log("Candidate Answer  " + candidateAnswers[i])
       console.log("Correct Answer " + correctAnswers[i])
       console.log(" ");
          i++; 
