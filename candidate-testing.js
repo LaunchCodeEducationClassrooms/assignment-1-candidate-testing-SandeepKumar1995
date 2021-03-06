@@ -6,11 +6,7 @@ var question;
 var correctAnswer;
 var candidateAnswer;
 var candidateName =" ";
-var questions = [[ 'Who was the first American woman in space?'], 
-['True or false: 5000 meters = 5 kilometers.'], 
-["Given the array [8, 'Orbit', 'Trajectory', 45], what entry is at index 2?"],
-['(5 + 3)/2 * 10 = ?'], 
-['What is the minimum crew size for the ISS?'] ];
+var questions = [[ 'Who was the first American woman in space?'], ['True or false: 5000 meters = 5 kilometers.'], ["Given the array [8, 'Orbit', 'Trajectory', 45], what entry is at index 2?"], ['(5 + 3)/2 * 10 = ?'], ['What is the minimum crew size for the ISS?'] ];
 var correctAnswers = [['sally ride'],['true'],['trajectory'], ['40'], ['3']];
 var candidateAnswers = [];
 var gradeQuiz = 0;
